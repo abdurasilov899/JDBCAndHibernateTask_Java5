@@ -1,18 +1,20 @@
 package peaksoft.dao;
 
 import peaksoft.model.User;
+import peaksoft.util.Util;
 
+import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserDaoHibernateImpl implements UserDao {
 
-    public UserDaoHibernateImpl() {
+    public UserDaoHibernateImpl() throws SQLException {
 
     }
 
     @Override
     public void createUsersTable() {
-
     }
 
     @Override
@@ -32,8 +34,8 @@ public class UserDaoHibernateImpl implements UserDao {
 
     @Override
     public List<User> getAllUsers() {
-        return null;
-    }
+
+    return  null;}
 
     @Override
     public void cleanUsersTable() {
@@ -45,6 +47,6 @@ public class UserDaoHibernateImpl implements UserDao {
         // eger databasede parametrine kelgen firstnamege okshosh adam bar bolso
         // anda true kaitarsyn
         // jok bolso anda false kaitarsyn.
-        return false;
-    }
+
+    return false;}
 }

@@ -17,7 +17,7 @@ import static org.junit.jupiter.api.Assertions.*;
 public class UserServiceTest {
 
     private final UserService underTest = new UserServiceImpl();
-    private final Connection connection;
+    private  final Connection connection;
 
     private final String testName = "Will";
     private final String testLastName = "Smith";
