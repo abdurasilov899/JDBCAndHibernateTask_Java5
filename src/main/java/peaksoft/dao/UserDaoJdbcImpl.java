@@ -15,7 +15,7 @@ public class UserDaoJdbcImpl implements UserDao {
     }
 
     public void createUsersTable() {
-        final String creat = """
+        final String query = """
                 create table if not exists users (
                 id serial primary key,
                 name varchar not null,
@@ -24,7 +24,7 @@ public class UserDaoJdbcImpl implements UserDao {
                 );
                 """;
         try (Statement stm = connection.createStatement()) {
-            stm.executeUpdate(creat);
+            stm.executeUpdate(query);
         } catch (SQLException e) {
             System.out.println(e.getMessage());
         }
@@ -42,9 +42,9 @@ public class UserDaoJdbcImpl implements UserDao {
     public void saveUser(String name, String lastName, byte age) {
         final String save = "insert into users(name,last_name,age) values(?,?,?)";
         try (PreparedStatement preparedStatement = connection.prepareStatement(save)) {
-            preparedStatement.setString(1,name);
-            preparedStatement.setString(2,lastName);
-            preparedStatement.setInt(3,age);
+            preparedStatement.setString(1, name);
+            preparedStatement.setString(2, lastName);
+            preparedStatement.setInt(3, age);
             preparedStatement.execute();
         } catch (SQLException e) {
             System.out.println(e.getMessage());
@@ -95,16 +95,15 @@ public class UserDaoJdbcImpl implements UserDao {
         // eger databasede parametrine kelgen firstnamege okshosh adam bar bolso
         // anda true kaitarsyn
         // jok bolso anda false kaitarsyn.
-        String query = "select case when name not null then true else false end from users where name = ?";
-        try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-            preparedStatement.setString(1, firstName);
-            ResultSet resultSet = preparedStatement.executeQuery();
-            return resultSet.next();
-        } catch (SQLException e) {
-            throw new RuntimeException(e);
-        }
+            String query = "select case when name notnull then true else false end from users where name like ?";
+            try (PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+                preparedStatement.setString(1, firstName);
+                ResultSet resultSet = preparedStatement.executeQuery();
+                return resultSet.next();
+
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+    return false;
     }
-
-
-
 }

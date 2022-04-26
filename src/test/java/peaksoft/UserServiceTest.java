@@ -4,6 +4,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
+import peaksoft.dao.UserDaoJdbcImpl;
 import peaksoft.model.User;
 import peaksoft.service.UserService;
 import peaksoft.service.UserServiceImpl;
@@ -15,8 +16,8 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class UserServiceTest {
-
-    private final UserService underTest = new UserServiceImpl();
+    private final UserDaoJdbcImpl underTest = new UserDaoJdbcImpl();
+  //private final UserService underTest = new UserServiceImpl();
     private  final Connection connection;
 
     private final String testName = "Will";

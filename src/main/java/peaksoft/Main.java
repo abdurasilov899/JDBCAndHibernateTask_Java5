@@ -16,10 +16,10 @@ public class Main {
 
         UserDao user = new UserDaoJdbcImpl();
         //user.createUsersTable();
-        //user.saveUser("Tologon","Ibraev", (byte) 30);
+//        user.saveUser("Tologon","Ibraev", (byte) 30);
         // user.removeUserById(1);
-        System.out.println(user.getAllUsers());
-
+        //System.out.println(user.getAllUsers());
+        System.out.println(user.existsByFirstName("Tologon"));
     }
 }
 
